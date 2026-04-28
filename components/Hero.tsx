@@ -8,8 +8,8 @@ import TeaCup from "./TeaCup";
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
   return (
     <section
@@ -30,7 +30,7 @@ export default function Hero() {
 
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-20"
+        className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 pt-28 pb-28"
       >
         {/* Eyebrow */}
         <motion.div
@@ -88,7 +88,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9, y: 60 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.4, delay: 1.3, ease: [0.2, 0.8, 0.2, 1] }}
-          className="mt-24 relative flex items-end justify-center gap-6 md:gap-16"
+          className="mt-14 relative flex items-end justify-center gap-6 md:gap-14"
         >
           {/* Left cup */}
           <TeaCup side="left" delay={1.5} className="hidden sm:block translate-y-4" />
@@ -106,7 +106,7 @@ export default function Hero() {
               <img
                 src="/images/red-pack.jpg"
                 alt="Mt. Mann Chai Premium CTC"
-                className="relative z-10 w-48 md:w-64 rounded-3xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] border border-[#C8A96A]/20"
+                className="relative z-10 w-44 md:w-56 rounded-3xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] border border-[#C8A96A]/20"
               />
             </div>
           </div>
