@@ -3,6 +3,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Steam from "./Steam";
+import TeaCup from "./TeaCup";
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -82,28 +83,36 @@ export default function Hero() {
           </Link>
         </motion.div>
 
-        {/* Floating product card */}
+        {/* Floating product + flanking tea cups */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 60 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.4, delay: 1.3, ease: [0.2, 0.8, 0.2, 1] }}
-          className="mt-20 relative"
+          className="mt-24 relative flex items-end justify-center gap-6 md:gap-16"
         >
-          <div className="absolute inset-0 bg-[#C8A96A]/20 blur-[80px]" />
-          <div className="relative float">
-            {/* Steam rising from the cup */}
-            <Steam
-              className="absolute left-1/2 -translate-x-1/2 -top-72 md:-top-80 z-0 mix-blend-screen opacity-80"
-              width={220}
-              height={320}
-              intensity={1}
-            />
-            <img
-              src="/images/red-pack.jpg"
-              alt="Mt. Mann Chai Premium CTC"
-              className="relative z-10 w-56 md:w-64 rounded-3xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] border border-[#C8A96A]/20"
-            />
+          {/* Left cup */}
+          <TeaCup side="left" delay={1.5} className="hidden sm:block translate-y-4" />
+
+          {/* Pack */}
+          <div className="relative">
+            <div className="absolute inset-0 bg-[#C8A96A]/20 blur-[80px]" />
+            <div className="relative float">
+              <Steam
+                className="absolute left-1/2 -translate-x-1/2 -top-72 md:-top-80 z-0 mix-blend-screen opacity-80"
+                width={220}
+                height={320}
+                intensity={1}
+              />
+              <img
+                src="/images/red-pack.jpg"
+                alt="Mt. Mann Chai Premium CTC"
+                className="relative z-10 w-48 md:w-64 rounded-3xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] border border-[#C8A96A]/20"
+              />
+            </div>
           </div>
+
+          {/* Right cup */}
+          <TeaCup side="right" delay={1.7} className="hidden sm:block translate-y-4" />
         </motion.div>
       </motion.div>
 
