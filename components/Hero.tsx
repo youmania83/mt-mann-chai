@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Steam from "./Steam";
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -90,10 +91,17 @@ export default function Hero() {
         >
           <div className="absolute inset-0 bg-[#C8A96A]/20 blur-[80px]" />
           <div className="relative float">
+            {/* Steam rising from the cup */}
+            <Steam
+              className="absolute left-1/2 -translate-x-1/2 -top-72 md:-top-80 z-0 mix-blend-screen opacity-80"
+              width={220}
+              height={320}
+              intensity={1}
+            />
             <img
               src="/images/red-pack.jpg"
               alt="Mt. Mann Chai Premium CTC"
-              className="w-56 md:w-64 rounded-3xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] border border-[#C8A96A]/20"
+              className="relative z-10 w-56 md:w-64 rounded-3xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] border border-[#C8A96A]/20"
             />
           </div>
         </motion.div>
